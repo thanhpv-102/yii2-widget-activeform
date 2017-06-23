@@ -1248,14 +1248,21 @@ class ActiveField extends YiiActiveField
      */
     protected function buildTemplate()
     {
-        $showLabels = $showErrors = $input = $error = null;
-        extract($this->_settings);
+        $showLabels = $this->_settings['showLabels'];
+        $showErrors = $this->_settings['showErrors'];
+        $input = $this->_settings['input'];
+        $error = $this->_settings['error'];
+        $hint = $this->_settings['hint'];
         if ($this->_isStatic && $this->showErrors !== true) {
             $showErrors = false;
         }
         $showLabels = $showLabels && $this->hasLabels();
         $this->buildLayoutParts($showLabels, $showErrors);
-        extract($this->_settings);
+        $showLabels = $this->_settings['showLabels'];
+        $showErrors = $this->_settings['showErrors'];
+        $input = $this->_settings['input'];
+        $error = $this->_settings['error'];
+        $hint = $this->_settings['hint'];
         if (!empty($this->_multiselect)) {
             $input = str_replace('{input}', $this->_multiselect, $input);
         }
